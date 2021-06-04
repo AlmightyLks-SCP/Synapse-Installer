@@ -17,7 +17,7 @@ Hit install, wait for it to finish downloading and installing and you're done!
 
 ## CLI
 
-As of now, the CLI only supports installed the latest version of Synapse.  
+As of now, the CLI only supports installing the latest version of Synapse.  
 The syntax looks as follows:  
 
 ```

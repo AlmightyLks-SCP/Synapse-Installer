@@ -1,4 +1,7 @@
 # Synapse-Installer
+![img](https://img.shields.io/github/languages/code-size/AlmightyLks/Synapse-Installer?style=flat-square)
+![img](https://img.shields.io/github/license/AlmightyLks/Synapse-Installer?style=flat-square)
+
 A helper program for installing Synapse for your SCP SL server
 
 ---

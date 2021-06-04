@@ -17,24 +17,26 @@ namespace Synapse.Installer.Cli
 {
     class Program
     {
-        private static List<GitHubRelease> _releases = new List<GitHubRelease>();
+        private static List<GitHubRelease> _releases;
         private static HttpClient _client;
         private static string _localSynapseReleasesFilePath;
         private static SynapseInstallationOption _synapseInstallationOption;
+        private static bool _running;
 
         static void Main(string[] args)
         {
             Init();
-            Console.WriteLine(string.Join(" ", args));
+            //Console.WriteLine(string.Join(" ", args));
 
             var result = Parser.Default.ParseArguments<SynapseInstallationOption>(args);
             result.WithNotParsed(stuff => Console.WriteLine("Please check your input and try again"));
             result.WithParsed(async installOptions => await ProcessParsing(installOptions));
 
-            Console.ReadKey();
+            while (_running) ;
         }
         private static void Init()
         {
+            _running = false;
             _client = new HttpClient();
             _client.DefaultRequestHeaders.Add("User-Agent", InstallerConstants.HttpUserAgent);
             _client.DefaultRequestHeaders.Add("Accept", InstallerConstants.HttpAccept);
@@ -46,13 +48,14 @@ namespace Synapse.Installer.Cli
         private static async Task ProcessParsing(SynapseInstallationOption option)
         {
             _synapseInstallationOption = option;
-            Console.WriteLine($"{option.ServerPath} | {option.LatestRelease} | {option.PreRelease}");
+            //Console.WriteLine($"{option.ServerPath} | {option.LatestRelease} | {option.PreRelease}");
 
             LoadGitHubReleases();
             await DownloadGitHubRelease(_releases.OrderByDescending(_ => _.CreatedAt).First(), option.ServerPath);
         }
         private static async Task DownloadGitHubRelease(GitHubRelease release, string serverPath)
         {
+            _running = true;
             try
             {
                 Console.WriteLine("Determining release...");
@@ -89,7 +92,7 @@ namespace Synapse.Installer.Cli
                     true
                     );
 
-                Console.WriteLine(@$"Creating AppData\Roaming\Synapse folder...");
+                Console.WriteLine(@$"Creating Synapse folder...");
                 //Create AppData Synapse folder
                 string synapseFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Synapse");
                 if (!Directory.Exists(synapseFolder))
@@ -97,7 +100,7 @@ namespace Synapse.Installer.Cli
                     Directory.CreateDirectory(synapseFolder);
                 }
 
-                //Console.WriteLine(@$"Copying Synapse.dll...";
+                Console.WriteLine(@$"Copying Synapse.dll...");
                 //Copy / Replace Synapse.dll
                 File.Copy(
                     Path.Combine("Temp", "Synapse", "Synapse.dll"),
@@ -105,14 +108,15 @@ namespace Synapse.Installer.Cli
                     true
                     );
 
-                //Console.WriteLine(@$"Creating AppData\Roaming\Synapse\dependencies folder...";
+                Console.WriteLine(@$"Creating Synapse\dependencies folder...");
                 //Create AppData Synapse Dependencies folder
-                if (!Directory.Exists(Path.Combine(synapseFolder, "dependencies")))
+                if (Directory.Exists(Path.Combine(synapseFolder, "dependencies")))
                 {
-                    Directory.CreateDirectory(Path.Combine(synapseFolder, "dependencies"));
+                    Directory.Delete(Path.Combine(synapseFolder, "dependencies"), true);
                 }
+                Directory.CreateDirectory(Path.Combine(synapseFolder, "dependencies"));
 
-                //Console.WriteLine(@$"Copying over dependencies...";
+                Console.WriteLine(@$"Copying over dependencies...");
                 //Copy / Replace dependencies over
                 foreach (var dependencyFile in Directory.GetFiles(Path.Combine("Temp", "Synapse", "dependencies")))
                 {
@@ -137,9 +141,9 @@ namespace Synapse.Installer.Cli
             }
             catch (Exception e)
             {
-                Console.WriteLine("Something went wrong!");
+                Console.WriteLine($"Something went wrong!{Environment.NewLine}{e}");
             }
-            Console.WriteLine($"{Environment.NewLine}Press any key to exit");
+            _running = false;
         }
         private static void LoadGitHubReleases()
         {

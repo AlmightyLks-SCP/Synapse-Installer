@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Synapse.Installer.Gui", "Synapse.Installer.Gui\Synapse.Installer.Gui.csproj", "{8BB62509-0DC1-4C00-93F4-B82DEDF7BC5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synapse.Installer.Cli", "Synapse.Installer.Cli\Synapse.Installer.Cli.csproj", "{370B4919-20DF-4364-A344-D2F5E9BCFE1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Synapse.Installer.Cli", "Synapse.Installer.Cli\Synapse.Installer.Cli.csproj", "{370B4919-20DF-4364-A344-D2F5E9BCFE1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synapse.Installer.Shared", "Synapse.Installer.Shared\Synapse.Installer.Shared.csproj", "{BD9E3947-D0C0-4F9F-9165-C89A692E7182}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Synapse.Installer.Shared", "Synapse.Installer.Shared\Synapse.Installer.Shared.csproj", "{BD9E3947-D0C0-4F9F-9165-C89A692E7182}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

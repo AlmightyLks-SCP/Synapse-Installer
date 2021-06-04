@@ -5,6 +5,13 @@
 		<TargetFramework>net5.0</TargetFramework>
 		<PublishTrimmed>true</PublishTrimmed>
 		<ApplicationIcon>Synapse.ico</ApplicationIcon>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageIcon>Synapse.png</PackageIcon>
+		<RepositoryUrl>https://github.com/AlmightyLks/Synapse-Installer</RepositoryUrl>
+		<Description>A CLI installer for Synapse</Description>
+		<Authors>AlmightyLks</Authors>
+		<Company>AlmightyLks</Company>
+		<PackageProjectUrl>https://github.com/AlmightyLks/Synapse-Installer</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -13,6 +20,17 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Synapse.Installer.Shared\Synapse.Installer.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
+	  <None Include="Assets\Synapse.png">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>

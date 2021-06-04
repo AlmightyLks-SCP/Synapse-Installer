@@ -97,10 +97,10 @@
 		<!-- Progress Label -->
 		<Label
 			Grid.Column="0" Grid.Row="3"
-			Margin="200 10 10 10"
-			FontSize="15"
+			Margin="200 21 10 10"
+			FontSize="20"
 			HorizontalAlignment="Left"
-			Content="{Binding InstallationProgress}"/>
+		    Content="{Binding InstallationProgress}"/>
 
 		<!-- Install Button -->
 		<Button

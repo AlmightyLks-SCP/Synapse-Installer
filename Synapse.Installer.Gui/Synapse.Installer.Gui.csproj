@@ -6,6 +6,12 @@
 		<PublishTrimmed>true</PublishTrimmed>
 		<AssemblyName>Synapse.Installer.Gui</AssemblyName>
 		<RootNamespace>Synapse.Installer.Gui</RootNamespace>
+		<Authors>AlmightyLks</Authors>
+		<Description>A GUI installer for Synapse</Description>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageProjectUrl>https://github.com/AlmightyLks/Synapse-Installer</PackageProjectUrl>
+		<PackageIcon>Synapse.png</PackageIcon>
+		<RepositoryUrl>https://github.com/AlmightyLks/Synapse-Installer</RepositoryUrl>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="0.10.3" />
@@ -17,5 +23,15 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Synapse.Installer.Shared\Synapse.Installer.Shared.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="..\LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
+	  <None Include="Assets\Synapse.png">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
 	</ItemGroup>
 </Project>

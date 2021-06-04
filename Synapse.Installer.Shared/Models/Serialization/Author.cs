@@ -2,7 +2,6 @@
 
 namespace Synapse.Installer.Shared.Model
 {
-    // Root myDeserializedClass = JsonSerializer.Deserialize<Root>(myJsonResponse);
     public class Author
     {
         [JsonPropertyName("login")]

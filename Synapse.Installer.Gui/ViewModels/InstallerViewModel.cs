@@ -108,10 +108,6 @@ namespace Synapse.Installer.Gui.ViewModels
         {
             ServerPath = await SynapseService.SelectServerPath(_window);
         }
-        public void DoStuff()
-        {
-
-        }
         private bool ValidateInput()
         {
             bool result = true;
@@ -126,7 +122,7 @@ namespace Synapse.Installer.Gui.ViewModels
                     .Select(path => Path.GetFileName(path));
                 result &= fileNames.Contains("SCPSL.exe");
             }
-            catch (Exception e)
+            catch
             {
                 result = false;
             }

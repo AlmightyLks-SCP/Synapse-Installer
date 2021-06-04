@@ -127,7 +127,7 @@ namespace Synapse.Installer.Gui.Services
             }
             catch (Exception e)
             {
-                _installerViewModel.InstallationProgress = "Something went wrong!";
+                _installerViewModel.InstallationProgress = $"Something went wrong!{Environment.NewLine}{e}";
             }
         }
         public async Task<string> SelectServerPath(Window window)

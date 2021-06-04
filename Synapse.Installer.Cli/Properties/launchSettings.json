@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Synapse.Installer.Cli": {
+      "commandName": "Project",
+      "commandLineArgs": "install --server \"C:\\Synapse-Stuff\\Server\" --latest --prerelease"
+    }
+  }
+}

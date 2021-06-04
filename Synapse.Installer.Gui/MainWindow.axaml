@@ -1,0 +1,129 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Synapse.Installer.Gui.ViewModels;assembly=Synapse.Installer.Gui"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Synapse.Installer.Gui.MainWindow"
+		Icon="/Assets/Synapse.ico"
+        Title="Synapse installer"
+		MinWidth="750"
+		MinHeight="350"
+		MaxWidth="750"
+		MaxHeight="350">
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="3*" />
+			<ColumnDefinition Width="1*" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="3*" />
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="1*" />
+		</Grid.RowDefinitions>
+
+		<!-- Server Path Label -->
+		<Label
+			Grid.Column="0" Grid.Row="0"
+			Margin="10 10 10 10"
+			Content="Server Path" />
+
+		<!-- Path TextBox -->
+		<TextBox
+			Grid.Column="0" Grid.Row="0"
+			Margin="10 45 10 20"
+			HorizontalAlignment="Left"
+			VerticalContentAlignment="Center"
+			HorizontalContentAlignment="Left"
+			Width="250"
+			Height="25"
+			BorderBrush="Black"
+			BorderThickness="1"
+			ToolTip.Tip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"
+			Text="{Binding Path=ServerPath, Mode=TwoWay}"/>
+
+		<!-- Select Path Button -->
+		<Button
+			Grid.Column="0" Grid.Row="0"
+			Margin="265 35 10 10"
+			HorizontalAlignment="Left"
+			VerticalContentAlignment="Center"
+			HorizontalContentAlignment="Center"
+			Width="40"
+			Height="32"
+			BorderBrush="Black"
+			BorderThickness="1"
+			Content="..."
+			Command="{Binding ServerPathCommand}"/>
+
+
+		<!-- Synapse Version Label -->
+		<Label
+			Grid.Column="0" Grid.Row="1"
+			Margin="10 15 10 10"
+			HorizontalAlignment="Left"
+			Content="Synapse Version" />
+
+		<!-- Synapse Version ComboBox -->
+		<ComboBox
+			Grid.Column="0" Grid.Row="1"
+			Margin="10 50 10 10"
+			HorizontalAlignment="Left"
+			HorizontalContentAlignment="Center"
+			VerticalContentAlignment="Center"
+			Width="190"
+			MaxWidth="190"
+			SelectedItem="{Binding SelectedRelease}"
+			ToolTip.Tip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"
+			Items="{Binding SynapseService.Releases}">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Path=TagName}" />
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<!-- Synapse Version Pre-Release CheckBox -->
+		<CheckBox
+			Grid.Column="0" Grid.Row="1"
+			Margin="215 35 10 10"
+			IsChecked="{Binding IncludePreRelease}">
+			Include Pre-Releases
+		</CheckBox>
+
+
+		<!-- Progress Label -->
+		<Label
+			Grid.Column="0" Grid.Row="3"
+			Margin="200 10 10 10"
+			FontSize="15"
+			HorizontalAlignment="Left"
+			Content="{Binding InstallationProgress}"/>
+
+		<!-- Install Button -->
+		<Button
+			Grid.Column="0" Grid.Row="3"
+			Margin="10 10 10 10"
+			HorizontalAlignment="Left"
+			HorizontalContentAlignment="Center"
+			VerticalContentAlignment="Center"
+			Width="175"
+			Height="50"
+			BorderBrush="Black"
+			BorderThickness="1"
+			Content="Install"
+			Command="{Binding InstallCommand}"/>
+
+
+		<!-- Synapse logo Image -->
+		<Image
+			Grid.Column="1" Grid.Row="0"
+			Grid.RowSpan="2"
+			ClipToBounds="False"
+			Height="150"
+			Width="150"
+			Source="/Assets/Synapse.png" />
+	</Grid>
+</Window>

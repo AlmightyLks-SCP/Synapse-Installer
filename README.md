@@ -1,3 +1,8 @@
+# OUTDATED
+This Plugin was intended for Synapse 2, and is not made, nor compatible with Synapse3.
+
+---
+
 # Synapse-Installer
 ![img](https://img.shields.io/github/languages/code-size/AlmightyLks/Synapse-Installer?style=flat-square)
 ![img](https://img.shields.io/github/license/AlmightyLks/Synapse-Installer?style=flat-square)
